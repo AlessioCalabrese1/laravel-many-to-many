@@ -35,12 +35,16 @@
                 </button>
 
                 @auth
-                    <div>
+                    <div class='mx-2'>
                     <a href="{{ route('admin.posts.index') }}">Post</a>
                 </div>
 
-                <div>
+                <div class='mx-2'>
                     <a href="{{ route('admin.categories.index') }}">Categories</a>
+                </div>
+
+                <div class='mx-2'>
+                    <a href="{{ route('admin.tags.index') }}">Tags</a>
                 </div>
                 @endauth
                 
