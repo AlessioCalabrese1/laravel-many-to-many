@@ -14,5 +14,14 @@
         <input type="text" class="form-control" name="img" id="posts-thumb" value="{{ $post->img }}">
     </div>
 
+    <div class="mb-3">
+        <label for="posts-category" class="form-label">Categories</label>
+        <select name="category_id" id="posts-category">
+            @foreach ($categories as $category)
+                <option value="{{ $category->id }}">{{ $category->name }}</option>
+            @endforeach
+        </select>
+    </div>
+
     <button type="submit" class="btn btn-primary">Add</button>
 </form>

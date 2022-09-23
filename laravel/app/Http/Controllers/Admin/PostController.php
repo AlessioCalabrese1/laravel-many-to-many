@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Category;
 use App\Http\Controllers\Controller;
 use App\Post;
 use Illuminate\Http\Request;
@@ -32,7 +33,8 @@ class PostController extends Controller
     public function create()
     {
         $post = new Post();
-        return view('admin.post.create', compact('post'));
+        $categories = Category::all();
+        return view('admin.post.create', ['post' => $post, 'categories' => $categories]);
     }
 
     /**
@@ -44,7 +46,7 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $sentData = $request->all();
-        $sentData['author'] = Auth::user();
+        $sentData['user_id'] = Auth::id();
         $sentData['date'] = Carbon::now();
         $post = new Post();
         $post = $post->create($sentData);
@@ -72,7 +74,8 @@ class PostController extends Controller
     public function edit($id)
     {
         $post = Post::findOrFail($id);
-        return view('admin.post.edit', compact('post'));
+        $categories = Category::all();
+        return view('admin.post.edit', ['post' => $post, 'categories' => $categories]);
     }
 
     /**
