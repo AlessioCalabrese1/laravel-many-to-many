@@ -33,7 +33,7 @@
                         </th>
                     </tr>
 
-                    @foreach ($posts as $post)
+                    @foreach ($category->posts as $post)
                     <tr>
                         <th>
                             {{ $post->id }}
