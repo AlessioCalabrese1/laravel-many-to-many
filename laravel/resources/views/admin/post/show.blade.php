@@ -6,7 +6,11 @@
     {{ $post->title }}
   </div>
   <div class="card-body">
-    <img src="{{ $post->img }}" alt="">
+    {{-- @if (filter_var($post->img, FILTER_VALIDATE_URL))
+      <img src="{{ $post->img }}" alt="">
+    @else --}}
+      <img src="{{ asset('storage/' . $post->img) }}" alt="">
+    {{-- @endif --}}
     <h5 class="card-title ">{{ $post->title }}</h5>
     <p class="card-text">Category: <a href="{{ route('admin.categories.show', $post->category->id) }}"
         class="badge badge-pill" style="background-color: {{ $post->category->color }}">{{ $post->category->name }}</a>

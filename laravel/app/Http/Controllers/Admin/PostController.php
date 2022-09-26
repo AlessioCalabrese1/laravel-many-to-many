@@ -8,7 +8,7 @@ use App\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
-
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 
@@ -46,8 +46,10 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $sentData = $request->all();
+        dd($sentData);
         $sentData['user_id'] = Auth::id();
         $sentData['date'] = Carbon::now();
+        $sentData['img'] = Storage::put('storage', $sentData['img']);
         $post = new Post();
         $post = $post->create($sentData);
         return redirect()->route('admin.posts.show', $post->id);

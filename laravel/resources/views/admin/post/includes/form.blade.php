@@ -1,4 +1,4 @@
-<form action="{{ route($route, $argument) }}" method="post">
+<form action="{{ route($route, $argument) }}" method="post" enctype="multipart/form-data">
     @csrf
     @method($method)
     <div class="mb-3">
@@ -11,7 +11,7 @@
     </div>
     <div class="mb-3">
         <label for="posts-thumb" class="form-label">Image</label>
-        <input type="text" class="form-control" name="img" id="posts-thumb" value="{{ $post->img }}">
+        <input type="file" class="form-control" name="img" id="posts-thumb" value="{{ $post->img }}">
     </div>
 
     <div class="mb-3">
